@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+</head>
+<body>
+
+<h1>KG 이니시스</h1>
+<button id="payBtn">Pay Now</button>
+
+<script>
+    // Iamport SDK 초기화
+    if (!window.IMP) {
+      alert("Iamport SDK가 로드되지 않았습니다.");
+    } else {
+      // 이미 선언된 IMP 객체를 재사용합니다.
+      const IMP = window.IMP;
+      IMP.init("imp54853063"); // 아임포트 식별 코드
+    }
+
+    document.getElementById("payBtn").addEventListener("click", function () {
+      // 결제 요청
+      IMP.request_pay(
+        {
+          pg: "html5_inicis", // 사용할 PG사
+          pay_method: "card", // 결제수단
+          merchant_uid: "order_no_" + new Date().getTime(), // 주문번호
+          name: "Test Payment", // 상품명
+          amount: 1000, // 결제 금액
+          buyer_email: "test@example.com", // 구매자 이메일
+          buyer_name: "홍길동", // 구매자 이름
+          buyer_tel: "010-1234-5678", // 구매자 전화번호
+          buyer_addr: "서울특별시 강남구 역삼동", // 구매자 주소
+          buyer_postcode: "12345", // 구매자 우편번호
+        },
+        function (rsp) {
+          // 결제 완료 후 콜백 함수
+          if (rsp.success) {
+            alert("결제가 완료되었습니다. 결제 금액: " + rsp.paid_amount + "원");
+            console.log(rsp);
+          } else {
+            alert("결제가 실패하였습니다. 에러: " + rsp.error_msg);
+          }
+        }
+      );
+    });
+</script>
+</body>
+</html>
