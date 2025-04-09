@@ -1,2 +1,2 @@
-DROP TABLE tbl_memo;
+`security`DROP TABLE tbl_memo;
 DELETE from tbl_memo;
