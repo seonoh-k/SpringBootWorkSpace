@@ -7,4 +7,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Override
     <S extends User> S save(S user);
+
+    // select * from user where username = ?
+    public User findByUsername(String username);
 }

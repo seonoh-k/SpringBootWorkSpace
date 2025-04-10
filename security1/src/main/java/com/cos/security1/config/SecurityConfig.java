@@ -1,15 +1,15 @@
 package com.cos.security1.config;
 
-import org.apache.coyote.Adapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity // 스프링 필터에 등록 됨
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // 스프링 필터에 등록 됨. @Secured, @PreAuthorise 활성화
 public class SecurityConfig {
 
     @Bean
