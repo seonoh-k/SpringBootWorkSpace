@@ -5,3 +5,6 @@ UPDATE user SET ROLE = 'ROLE_MANAGER' WHERE id = 4;
 UPDATE user SET ROLE = 'ROLE_ADMIN' WHERE id = 5;
 
 COMMIT;
+
+DROP TABLE guest_book;
+DELETE guest_book;
