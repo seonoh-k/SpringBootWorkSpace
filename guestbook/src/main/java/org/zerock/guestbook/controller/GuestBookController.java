@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.guestbook.dto.GuestBookDTO;
 import org.zerock.guestbook.dto.PageRequestDTO;
+import org.zerock.guestbook.dto.PageResultDTO;
 import org.zerock.guestbook.service.GuestBookService;
 
 @Controller
@@ -30,6 +31,12 @@ public class GuestBookController {
         log.info("list work");
 
         model.addAttribute("list", service.getList(pageRequestDTO));
+    }
+
+    @GetMapping("/list2")
+    public void list2() {
+        log.info("list2 get work");
+
     }
 
     @GetMapping("/register")
